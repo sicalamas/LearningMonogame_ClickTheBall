@@ -13,6 +13,7 @@
 
 <h2 id="introID">Introduction</h2>
 <p>This implementation of the Click the Ball game was performed for teaching algorithm and and video game programming with C # and the Monogame library. At first for the classes of the 2nd period of the IFRJ's informatics technical course in São João de Meriti <i>campus</i>, in 2019.1, later the project was worked with other classes and published open source.</p>
+<img src="https://i.imgur.com/7yfGn2g.png" width="100%">
 
 <h2 id="depID">Dependencies</h2>
 <ul>
