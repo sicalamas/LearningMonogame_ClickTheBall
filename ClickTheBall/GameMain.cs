@@ -125,7 +125,7 @@ namespace ClickTheBall
                 Color.Gray,
                 0.0f,
                 new Vector2(0, 0),
-                GameConfig.SCALE / 3,
+                GameConfig.SCALE / 2,
                 SpriteEffects.None,
                 0
                 );
