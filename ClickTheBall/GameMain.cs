@@ -26,7 +26,7 @@ namespace ClickTheBall
             graphics.PreferredBackBufferWidth = GameConfig.WIDTH;
             graphics.PreferredBackBufferHeight = GameConfig.HEIGHT;
             graphics.IsFullScreen = GameConfig.FULLSCREEN;
-            Window.IsBorderless = true;
+            Window.IsBorderless = GameConfig.BORDERLESS;
 
             Content.RootDirectory = "Content";
 
@@ -108,6 +108,22 @@ namespace ClickTheBall
                 0.0f,
                 new Vector2(0, 0),
                 GameConfig.SCALE,
+                SpriteEffects.None,
+                0
+                );
+
+                spriteBatch.DrawString
+                (
+                GameConfig.gameFont,
+                "Debug velocity:\n" +
+                ball.getVelocity().ToString() +
+                "\nDebug position:\n" +
+                ball.getPosition().ToString(),
+                new Vector2(2 * GameConfig.SCALE, 12 * GameConfig.SCALE),
+                GameConfig.spColor,
+                0.0f,
+                new Vector2(0, 0),
+                GameConfig.SCALE / 2,
                 SpriteEffects.None,
                 0
                 );

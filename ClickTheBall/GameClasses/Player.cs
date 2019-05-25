@@ -67,6 +67,10 @@ namespace ClickTheBall.GameClasses
                                 rand.Next(8 * (int)GameConfig.SCALE, GameConfig.HEIGHT - 8 * (int)GameConfig.SCALE)
                             )
                         );
+                    ball.setDirection
+                        (
+                            new Vector2((rand.Next(20) / 10) - 1,(rand.Next(20) / 10) - 1) // A (-1 to 1, -1 to 1) random vector 
+                        );
                 }
             }
         }

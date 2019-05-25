@@ -45,6 +45,11 @@ namespace ClickTheBall.GameClasses
             else if (position.Y > GameConfig.HEIGHT - 8 * GameConfig.SCALE || position.Y < 0.0f + 8 * GameConfig.SCALE) velocity.Y *= -1.0f;
         }
 
+        public virtual Vector2 getVelocity()
+        {
+            return velocity;
+        }
+
         internal Vector2 getPosition()
         {
             return position;
@@ -58,6 +63,17 @@ namespace ClickTheBall.GameClasses
         internal void setPosition(Vector2 p)
         {
             position = p;
+        }
+
+        public void setDirection(Vector2 v)
+        {
+            // Get vector lenght
+            float originalLength = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
+            float otherLenght = (float)Math.Sqrt(v.X * v.X + v.Y * v.Y);
+            // Normalize vector
+            Vector2 newVector = new Vector2(v.X / otherLenght, v.Y / otherLenght);
+            newVector *= originalLength;
+            velocity = newVector;
         }
     }
 }

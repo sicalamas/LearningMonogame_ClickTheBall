@@ -20,6 +20,7 @@ namespace ClickTheBall.GameClasses
         public static int WIDTH;
         public static int HEIGHT;
         public static bool FULLSCREEN;
+        public static bool BORDERLESS;
 
         // UI config
         public static float SCALE;
@@ -46,9 +47,11 @@ namespace ClickTheBall.GameClasses
             var parser = new FileIniDataParser();
             IniData data = parser.ReadFile(fN);
 
-            // Fullscreen boolean
+            // Fullscreen & Borderless booleans
             string fS = data["display"]["fullscreen"];
             GameConfig.FULLSCREEN = bool.Parse(fS);
+            string bL = data["display"]["borderless"];
+            GameConfig.BORDERLESS = bool.Parse(bL);
 
             // Width and Height
             string w = data["display"]["width"];
@@ -75,6 +78,7 @@ namespace ClickTheBall.GameClasses
             // Print config values on console (for debugging)
             Console.WriteLine("GLOBAL CONFIGURATIONS"
                 + "\n - Full Screen:" + fS
+                + "\n - Borderless:" + bL
                 + "\n - Screen Width:" + w
                 + "\n - Screen Height:" + h
                 + "\n - UI Scale:" + s
