@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -65,14 +61,17 @@ namespace ClickTheBall.GameClasses
             position = p;
         }
 
-        public void setDirection(Vector2 v)
+        public void randomDirection(GameTime gT)
         {
+            Random rand = new Random(this.GetHashCode() + (int)gT.TotalGameTime.TotalMilliseconds);
+            Vector2 v = new Vector2((rand.Next(20) - 10), (rand.Next(20) - 10)); // A (-1 to 1, -1 to 1) random vector 
+            Console.WriteLine("Random vector = " + v.ToString());
             // Get vector lenght
-            float originalLength = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
-            float otherLenght = (float)Math.Sqrt(v.X * v.X + v.Y * v.Y);
+            float originalLength = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y); Console.WriteLine("original lenght = " + originalLength);
+            float otherLenght = (float)Math.Sqrt(v.X * v.X + v.Y * v.Y); Console.WriteLine("other lenght = " + otherLenght);
             // Normalize vector
-            Vector2 newVector = new Vector2(v.X / otherLenght, v.Y / otherLenght);
-            newVector *= originalLength;
+            Vector2 newVector = new Vector2(v.X / otherLenght, v.Y / otherLenght); Console.WriteLine("Normalized new Vector lenght = " + newVector.ToString());
+            newVector *= originalLength; Console.WriteLine("Multiplied new vector lenght = " + newVector.ToString());
             velocity = newVector;
         }
     }

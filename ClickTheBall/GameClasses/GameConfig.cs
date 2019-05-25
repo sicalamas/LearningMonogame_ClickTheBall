@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IniParser;
 using IniParser.Model;
 using Microsoft.Xna.Framework;
@@ -19,6 +15,7 @@ namespace ClickTheBall.GameClasses
         // Screen configs
         public static int WIDTH;
         public static int HEIGHT;
+        public static bool DEBUG;
         public static bool FULLSCREEN;
         public static bool BORDERLESS;
 
@@ -47,7 +44,9 @@ namespace ClickTheBall.GameClasses
             var parser = new FileIniDataParser();
             IniData data = parser.ReadFile(fN);
 
-            // Fullscreen & Borderless booleans
+            // Debug, Fullscreen & Borderless booleans
+            string dBg = data["display"]["debug"];
+            GameConfig.DEBUG = bool.Parse(dBg);
             string fS = data["display"]["fullscreen"];
             GameConfig.FULLSCREEN = bool.Parse(fS);
             string bL = data["display"]["borderless"];
@@ -77,6 +76,7 @@ namespace ClickTheBall.GameClasses
 
             // Print config values on console (for debugging)
             Console.WriteLine("GLOBAL CONFIGURATIONS"
+                + "\n - Debug:" + dBg
                 + "\n - Full Screen:" + fS
                 + "\n - Borderless:" + bL
                 + "\n - Screen Width:" + w

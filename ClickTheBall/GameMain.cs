@@ -20,7 +20,7 @@ namespace ClickTheBall
         
         public GameMain()
         {
-            GameConfig.loadConfig("Config.ini");
+            GameConfig.loadConfig("Content/Config.ini");
 
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = GameConfig.WIDTH;
@@ -111,7 +111,8 @@ namespace ClickTheBall
                 SpriteEffects.None,
                 0
                 );
-
+            if(GameConfig.DEBUG)
+            {
                 spriteBatch.DrawString
                 (
                 GameConfig.gameFont,
@@ -120,13 +121,15 @@ namespace ClickTheBall
                 "\nDebug position:\n" +
                 ball.getPosition().ToString(),
                 new Vector2(2 * GameConfig.SCALE, 12 * GameConfig.SCALE),
-                GameConfig.spColor,
+                Color.Gray,
                 0.0f,
                 new Vector2(0, 0),
                 GameConfig.SCALE / 2,
                 SpriteEffects.None,
                 0
                 );
+            }
+
 
             spriteBatch.DrawRectangle
                 (
