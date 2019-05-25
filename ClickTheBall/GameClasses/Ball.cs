@@ -41,8 +41,8 @@ namespace ClickTheBall.GameClasses
         public virtual void setVelocity()
         {
             velocity *= 1.001f;
-            if (position.X >= GameConfig.WIDTH - 8 * GameConfig.SCALE || position.X <= 0.0f + 8 * GameConfig.SCALE) velocity.X *= -1.0f;
-            else if (position.Y >= GameConfig.HEIGHT - 8 * GameConfig.SCALE || position.Y <= 0.0f + 8 * GameConfig.SCALE) velocity.Y *= -1.0f;
+            if (position.X > GameConfig.WIDTH - 8 * GameConfig.SCALE || position.X < 0.0f + 8 * GameConfig.SCALE) velocity.X *= -1.0f;
+            else if (position.Y > GameConfig.HEIGHT - 8 * GameConfig.SCALE || position.Y < 0.0f + 8 * GameConfig.SCALE) velocity.Y *= -1.0f;
         }
 
         internal Vector2 getPosition()
