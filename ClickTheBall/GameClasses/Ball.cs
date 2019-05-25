@@ -56,22 +56,28 @@ namespace ClickTheBall.GameClasses
             player = p;
         }
 
-        internal void setPosition(Vector2 p)
+        internal void randomPosition(GameTime gT)
         {
-            position = p;
+            Random rand = new Random(this.GetHashCode() + (int)gT.TotalGameTime.Ticks);
+
+            Vector2 newPosition = new Vector2
+                (
+                    rand.Next(9 * (int)GameConfig.SCALE, GameConfig.WIDTH - 9 * (int)GameConfig.SCALE),
+                    rand.Next(9 * (int)GameConfig.SCALE, GameConfig.HEIGHT - 9 * (int)GameConfig.SCALE)
+                );
+            position = newPosition;
         }
 
         public void randomDirection(GameTime gT)
         {
-            Random rand = new Random(this.GetHashCode() + (int)gT.TotalGameTime.TotalMilliseconds);
-            Vector2 v = new Vector2((rand.Next(20) - 10), (rand.Next(20) - 10)); // A (-1 to 1, -1 to 1) random vector 
-            Console.WriteLine("Random vector = " + v.ToString());
+            Random rand = new Random(this.GetHashCode() + (int)gT.TotalGameTime.Ticks);
+            Vector2 v = new Vector2((rand.Next(20) - 10), (rand.Next(20) - 10)); // A (-10 to 10, -10 to 10) random vector 
             // Get vector lenght
-            float originalLength = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y); Console.WriteLine("original lenght = " + originalLength);
-            float otherLenght = (float)Math.Sqrt(v.X * v.X + v.Y * v.Y); Console.WriteLine("other lenght = " + otherLenght);
+            float originalLength = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
+            float otherLenght = (float)Math.Sqrt(v.X * v.X + v.Y * v.Y);
             // Normalize vector
-            Vector2 newVector = new Vector2(v.X / otherLenght, v.Y / otherLenght); Console.WriteLine("Normalized new Vector lenght = " + newVector.ToString());
-            newVector *= originalLength; Console.WriteLine("Multiplied new vector lenght = " + newVector.ToString());
+            Vector2 newVector = new Vector2(v.X / otherLenght, v.Y / otherLenght);
+            newVector *= originalLength;
             velocity = newVector;
         }
     }

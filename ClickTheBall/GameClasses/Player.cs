@@ -56,17 +56,7 @@ namespace ClickTheBall.GameClasses
                 if(Vector2.Distance(mS.Position.ToVector2(),ball.getPosition()) <= 8 * GameConfig.SCALE )
                 {
                     score += 1;
-
-                    Random rand = new Random(this.GetHashCode() + (int)gT.TotalGameTime.TotalMilliseconds);
-                    
-                    ball.setPosition
-                        (
-                            new Vector2
-                            (
-                                rand.Next(8 * (int)GameConfig.SCALE, GameConfig.WIDTH - 8 * (int)GameConfig.SCALE),
-                                rand.Next(8 * (int)GameConfig.SCALE, GameConfig.HEIGHT - 8 * (int)GameConfig.SCALE)
-                            )
-                        );
+                    ball.randomPosition(gT);
                     ball.randomDirection(gT);
                 }
             }

@@ -116,15 +116,16 @@ namespace ClickTheBall
                 spriteBatch.DrawString
                 (
                 GameConfig.gameFont,
-                "Debug velocity:\n" +
+                "Debuf info: \n" +
+                " - velocity:\n" +
                 ball.getVelocity().ToString() +
-                "\nDebug position:\n" +
+                "\n - position:\n" +
                 ball.getPosition().ToString(),
                 new Vector2(2 * GameConfig.SCALE, 12 * GameConfig.SCALE),
                 Color.Gray,
                 0.0f,
                 new Vector2(0, 0),
-                GameConfig.SCALE / 2,
+                GameConfig.SCALE / 3,
                 SpriteEffects.None,
                 0
                 );
